@@ -6,7 +6,8 @@
 
 <div class="container">
 	<section>
-		<a href="<spring:url value="/part/addPart/" />">Add New Part</a>
+		<a href="<spring:url value="/part/addPart/" />" class="btn btn-info">Add New Part</a>
+		
 		<table class="table table-striped">
 			<thead class="thead-inverse">
 				<tr>
@@ -31,14 +32,14 @@
 						<td>${part.modelNumber}</td>
 						<td>${part.quantity}</td>
 						<td>${part.description}</td>
-						<td>${part.department}</td>
+						<td>${part.department.name}</td>
 						<td><a
 							href="<spring:url value="/part/viewPart/${part.partId}" />">
 								<span class="glyphicon glyphicon-info-sign"></span>
 						</a> 
-						<a href="<spring:url value="/part/deletePart/${part.partId}" />">
+						<a href="<spring:url value="/part/deletePart/${part.partId}" />" onclick="if (!(confirm('Are you sure you want to delete this part?'))) return false">
 								<span class="glyphicon glyphicon-trash"></span>
-						</a>  
+						</a>
 						<a href="<spring:url value="/part/editPart/${part.partId}" />">
 								<span class="glyphicon glyphicon-edit"></span>
 						</a></td>

@@ -11,6 +11,7 @@ import nissan.model.Part;
 import nissan.service.PartService;
 
 @Service
+@Transactional
 public class PartServiceImpl  implements PartService{
 	
 	@Autowired

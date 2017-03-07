@@ -99,3 +99,86 @@
 </body>
 
 </html>
+<%-- <form:form action="/Nissan/employee/addEmployee" commandName="employee" method="POST">
+
+		<table>
+			<tbody>
+				<tr class="form-group">
+					<td><label>First name:</label></td>
+					<td><form:input type="text"  path="firstName" class="form-Control" placeholder="John" /></td>
+				</tr>
+
+				<tr class="form-group">
+					<td><label>Last name:</label></td>
+					<td><form:input path="lastName" class="form-Control" placeholder="Doa" /></td>
+				</tr>
+				<tr class="form-group">
+					<td><label>Department:</label></td>
+					<td><form:select type="text" path="department" id="department" class="form-Control">
+						<form:options items="${part.departmentOption}"/>
+					</form:select></td>
+				</tr>
+
+				<tr class="form-group">
+					<td><label>Employee Number:</label></td>
+					<td><form:input path="employeeNumber" class="form-Control" placeholder="JU3ES2"  /></td>
+				</tr>
+
+				<tr>
+					<td><label></label></td>
+					<td><input type="submit" value="submit" class="btn btn-lg btn-primary" /></td>
+				</tr>
+
+			</tbody>
+		</table>
+
+	</form:form> --%>
+	
+	=================
+<%-- <%@include file="/WEB-INF/views/template/header.jsp"%>
+<%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
+<!-- Main CSS -->
+<link href="${jstlCss}" rel="stylesheet" />
+
+
+
+<div class="wrapper">
+	<div id="header">
+		<h2>Employee Relationship Manager</h2>
+	</div>
+	<div class="container">
+		<h3>Add New Employee</h3>
+		<form:form class="cf" action="/Nissan/employee/addEmploye"
+			method="post" commandName="employee">
+			<div class="half left cf">
+				<div class="form-group">
+					<label for="firstName">First Name:</label>
+					<form:input type="text" path="firstName" id="firstName"
+						class="form-Control" placeholder="First Name" />
+				</div>
+				<div class="form-group">
+					<label for=lastName>Last Name:</label>
+					<form:input type="text" path="lastName" id="lastName"
+						class="form-Control" placeholder="Last Name" />
+				</div>
+				<div class="form-group">
+					<label for="employeeNumber">Employee Number:</label>
+					<form:input type="text" path="employeeNumber" id="employeeNumber"
+						class="form-Control" placeholder="Employee Number" />
+				</div>
+			</div>
+			<div class="half right cf">
+				<div class="form-group">
+					<label for="department">Department:</label>
+					<form:select type="text" path="department" id="department"
+						class="form-Control">
+						<form:options items="${part.departmentOption}" />
+					</form:select>
+				</div>
+			</div>
+			<input type="submit" value="Submit" id="input_submit">
+		</form:form>
+	</div>ZZ
+</div>
+
+<%@include file="/WEB-INF/views/template/footer.jsp"%> --%>

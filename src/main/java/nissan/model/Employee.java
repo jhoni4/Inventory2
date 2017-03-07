@@ -1,6 +1,7 @@
 package nissan.model;
 
 import java.io.Serializable;
+import java.util.LinkedHashMap;
 
 import javax.persistence.*;
 
@@ -10,19 +11,42 @@ public class Employee implements Serializable {
 	/**
 	 * 
 	 */
-	private static final long serialVersionUID = 3698481118866685401L;
+	private static final long serialVersionUID = 478525988806153335L;
 	@Id
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int employeeId;
 	private String firstName;
 	private String lastName;
 	private int employeeNumber;
+
+	@OneToOne
+	@JoinColumn(name = "departmentId")
+	private Department department;
 	
-//	@OneToOne
-//	@JoinColumn(name = "partId")
-//	private Part part;
+	
+	@Transient
+	private LinkedHashMap<String, String> departmentOption;
+
+	@Transient
+	public LinkedHashMap<String, String> getDepartmentOption() {
+		return departmentOption;
+	}
 
 	public Employee() {
+		departmentOption = new LinkedHashMap<>();
+		departmentOption.put("Bodys", "Bodys");
+		departmentOption.put("Paints", "Paints");
+		departmentOption.put("Exterior", "Exterior");
+		departmentOption.put("Interior", "Interior");
+		departmentOption.put("Trim", "Trim");
+	}
+
+	public Department getDepartment() {
+		return department;
+	}
+	
+	public void setDepartment(Department department) {
+		this.department = department;
 	}
 
 	public int getEmployeeId() {
@@ -54,13 +78,6 @@ public class Employee implements Serializable {
 	}
 
 	public void setEmployeeNumber(int employeeNumber) {
-		this.employeeNumber = employeeNumber;
-	}
-
-	public Employee(int employeeId, String firstName, String lastName, int employeeNumber) {
-		this.employeeId = employeeId;
-		this.firstName = firstName;
-		this.lastName = lastName;
 		this.employeeNumber = employeeNumber;
 	}
 

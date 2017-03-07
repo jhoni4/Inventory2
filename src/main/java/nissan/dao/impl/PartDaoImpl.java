@@ -1,20 +1,18 @@
 package nissan.dao.impl;
 
+import java.util.ArrayList;
 import java.util.List;
 
 import org.hibernate.Query;
-
 import org.hibernate.Session;
 import org.hibernate.SessionFactory;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
-import org.springframework.transaction.annotation.Transactional;
 
 import nissan.dao.PartDao;
 import nissan.model.Part;
 
 @Repository
-@Transactional
 public class PartDaoImpl implements PartDao {
 
 	
@@ -23,11 +21,12 @@ public class PartDaoImpl implements PartDao {
 	
 	public List<Part> getPartsList() {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = (Query) session.createQuery("from Part");
+		Query query = (Query) session.createQuery("from Part order by name");
 		List<Part> partsList = query.list();
 		session.flush();
 		return partsList;
 	}
+	
 
 	public Part getPartsById(int partId) {
 		Session session = sessionFactory.getCurrentSession();
@@ -38,7 +37,11 @@ public class PartDaoImpl implements PartDao {
 
 	public void addParts(Part part) {
 		Session session = sessionFactory.getCurrentSession();
+		List<Part> parts = new ArrayList<Part>();
+		parts.add(part);
+		part.getDepartment().setParts(parts);
 		session.saveOrUpdate(part);
+		session.saveOrUpdate(part.getDepartment());
 		session.flush();
 		
 	}

@@ -16,7 +16,7 @@
 
     <bean id="dataSource" class="org.springframework.jdbc.datasource.DriverManagerDataSource">
         <property name="driverClassName" value="org.h2.Driver" />
-        <property name="url" value="jdbc:h2:tcp://localhost/~/parts" />
+        <property name="url" value="jdbc:h2:tcp://localhost/~/nissan2" />
         <property name="username" value="sa" />
         <property name="password" value="" />
     </bean>
@@ -35,7 +35,7 @@
         </property>
         <property name="packagesToScan">
             <list>
-                <value>nissan</value>
+                <value>nissan.model</value>
             </list>
         </property>
     </bean>
