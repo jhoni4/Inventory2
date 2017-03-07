@@ -5,6 +5,8 @@ import java.util.LinkedHashMap;
 
 import javax.persistence.*;
 
+import org.hibernate.validator.constraints.NotEmpty;
+
 @Entity
 public class Employee implements Serializable {
 
@@ -19,11 +21,62 @@ public class Employee implements Serializable {
 	private String lastName;
 	private int employeeNumber;
 
+//	@NotEmpty(message = "The employee email must not be null.")
+	private String employeeEmail;
+	private String employeePhone;
+
+//	@NotEmpty(message = "The customer username must not be null.")
+	private String username;
+
+//	@NotEmpty(message = "The customer password must not be null.")
+	private String password;
+
+	private boolean enabled;
+	
+	public String getEmployeeEmail() {
+		return employeeEmail;
+	}
+
+	public void setEmployeeEmail(String employeeEmail) {
+		this.employeeEmail = employeeEmail;
+	}
+
+	public String getEmployeePhone() {
+		return employeePhone;
+	}
+
+	public void setEmployeePhone(String employeePhone) {
+		this.employeePhone = employeePhone;
+	}
+
+	public String getUsername() {
+		return username;
+	}
+
+	public void setUsername(String username) {
+		this.username = username;
+	}
+
+	public String getPassword() {
+		return password;
+	}
+
+	public void setPassword(String password) {
+		this.password = password;
+	}
+
+	public boolean isEnabled() {
+		return enabled;
+	}
+
+	public void setEnabled(boolean enabled) {
+		this.enabled = enabled;
+	}
+
 	@OneToOne
 	@JoinColumn(name = "departmentId")
 	private Department department;
-	
-	
+
 	@Transient
 	private LinkedHashMap<String, String> departmentOption;
 
@@ -44,7 +97,7 @@ public class Employee implements Serializable {
 	public Department getDepartment() {
 		return department;
 	}
-	
+
 	public void setDepartment(Department department) {
 		this.department = department;
 	}

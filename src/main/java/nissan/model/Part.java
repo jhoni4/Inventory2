@@ -31,7 +31,7 @@ public class Part implements Serializable {
 //	@Min(value = 0, message = "The part quantity must not be less than zero.")
 	private int quantity;
 	
-	@ManyToOne
+	
 	private Department department;
 	
 	@Transient
@@ -83,7 +83,7 @@ public class Part implements Serializable {
 		this.description = description;
 	}
 
-
+	@ManyToOne
 	public Department getDepartment() {
 		return department;
 	}

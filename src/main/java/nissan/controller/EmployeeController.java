@@ -2,8 +2,6 @@ package nissan.controller;
 
 import java.util.List;
 
-import javax.validation.Valid;
-
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -12,7 +10,6 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
-import nissan.model.Department;
 import nissan.model.Employee;
 import nissan.service.EmployeeService;
 
@@ -40,6 +37,28 @@ public class EmployeeController {
 	@RequestMapping(path = "/addEmployee", method = RequestMethod.POST)
 	public String addEmployee(@ModelAttribute("employee") Employee employee, BindingResult result,
             Model model) {
+		
+		if (result.hasErrors()) {
+            return "addEmployee";
+        }
+
+        List<Employee> employeeList=employeeService.getEmployeeList();
+
+        for (int i=0; i< employeeList.size(); i++) {
+            if(employee.getEmployeeEmail().equals(employeeList.get(i).getEmployeeEmail())) {
+                model.addAttribute("emailMsg", "Email already exists");
+
+                return "addEmployee";
+            }
+
+            if(employee.getUsername().equals(employeeList.get(i).getUsername())) {
+                model.addAttribute("usernameMsg", "Username already exists");
+
+                return "addEmployee";
+            }
+        }
+
+        employee.setEnabled(true);
 		employeeService.addEmployee(employee);
 		return "redirect:/employee";
 	}

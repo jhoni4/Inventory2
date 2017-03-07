@@ -4,6 +4,7 @@ import java.io.Serializable;
 import java.util.ArrayList;
 import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
@@ -23,8 +24,8 @@ public class Department implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int departmentId;
 	private String name;
-
-	@OneToMany(mappedBy = "department")
+	
+	@OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
 	private List<Part> parts;
 	
 	@OneToOne
@@ -44,6 +45,7 @@ public class Department implements Serializable {
 	public Department() {
 	}
 
+	
 	public List<Part> getParts() {
 		return parts;
 	}
