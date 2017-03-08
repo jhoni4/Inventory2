@@ -53,10 +53,26 @@
 					</ul>
             </li>
           </ul>
-	          <form class="navbar-form navbar-right">
-					<input class="form-control mr-sm-2" type="text" placeholder="Search">
-					<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
-			</form>
+          <form class="navbar-form navbar-right">
+				<input class="form-control mr-sm-2" type="text" placeholder="Search">
+				<button class="btn btn-outline-success my-2 my-sm-0" type="submit">Search</button>
+		  </form>
+		  <ul class="nav navbar-nav pull-right">
+                        <c:if test="${pageContext.request.userPrincipal.name != null}">
+                            <li><a>Welcome: ${pageContext.request.userPrincipal.name}</a></li>
+                            <li><a href="<c:url value="/j_spring_security_logout" />">Logout</a></li>
+                            <c:if test="${pageContext.request.userPrincipal.name != 'admin'}">
+                                <li><a href="<c:url value="/Nissan/part" />">Part List</a></li>
+                            </c:if>
+                            <c:if test="${pageContext.request.userPrincipal.name  == 'admin'}">
+                                <li><a href="<c:url value="/admin" />">Admin</a></li>
+                            </c:if>
+                        </c:if>
+                        <c:if test="${pageContext.request.userPrincipal.name  == null}">
+	                        <li><a href="<c:url value="/login" />">Login</a></li>
+	                        <li><a href="<c:url value="/register" />">Register</a></li>
+                        </c:if>
+                    </ul>
         </div>
       </div>
     </nav>

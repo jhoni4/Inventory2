@@ -1,4 +1,4 @@
-package nissan.controller;
+package nissan.admin.controller;
 
 import java.util.List;
 
@@ -14,30 +14,27 @@ import nissan.model.Employee;
 import nissan.service.EmployeeService;
 
 @Controller
-@RequestMapping("/")
-public class HomeController {
+@RequestMapping("/admin")
+public class AdminEmployeeController {
 	
 	@Autowired
 	private EmployeeService employeeService;
 	
-	@RequestMapping
-	public String home(){
-		return "home";
+	@RequestMapping("/employee")
+	public String showEmployees(Model model) {
+		List<Employee> employeeList = employeeService.getEmployeeList();
+		model.addAttribute("employeeList", employeeList);
+		return "adminEmployeePage";
 	}
-	
-	@RequestMapping("/login")
-	public String login(){
-		return "login";
-	}
-	
-	@RequestMapping("/register")
-	public String register(Model model){
+
+	@RequestMapping(value = "/employee/addEmployee", method = RequestMethod.GET)
+	public String addEmployee(Model model) {
 		Employee employee = new Employee();
 		model.addAttribute("employee", employee);
-		return "register";
+		return "addEmployee";
 	}
-	
-	@RequestMapping(path = "/register", method = RequestMethod.POST)
+
+	@RequestMapping(path = "/employee/addEmployee", method = RequestMethod.POST)
 	public String addEmployee(@ModelAttribute("employee") Employee employee, BindingResult result,
             Model model) {
 		
@@ -63,8 +60,6 @@ public class HomeController {
 
         employee.setEnabled(true);
 		employeeService.addEmployee(employee);
-		return "redirect:/";
+		return "redirect:/admin/employee";
 	}
-
 }
-

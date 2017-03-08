@@ -21,7 +21,7 @@ public class PartDaoImpl implements PartDao {
 	
 	public List<Part> getPartsList() {
 		Session session = sessionFactory.getCurrentSession();
-		Query query = (Query) session.createQuery("from Part order by name");
+		Query query = (Query) session.createQuery("from Part order by partName");
 		List<Part> partsList = query.list();
 		session.flush();
 		return partsList;
@@ -37,11 +37,7 @@ public class PartDaoImpl implements PartDao {
 
 	public void addParts(Part part) {
 		Session session = sessionFactory.getCurrentSession();
-		List<Part> parts = new ArrayList<Part>();
-		parts.add(part);
-		part.getDepartment().setParts(parts);
 		session.saveOrUpdate(part);
-		session.saveOrUpdate(part.getDepartment());
 		session.flush();
 		
 	}

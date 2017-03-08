@@ -1,8 +1,8 @@
 <%@include file="/WEB-INF/views/template/header.jsp"%>
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
-<!-- Main CSS -->
-<link href="${jstlCss}" rel="stylesheet" />
-
+<%-- <!-- Main CSS -->
+<link href="${jstlCss}" rel="stylesheet" /> --%>
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css" rel="stylesheet" integrity="sha384-Xqcy5ttufkC3rBa8EdiAyA1VgOGrmel2Y+wxm4K3kI3fcjTWlDWrlnxyD6hOi3PF" crossorigin="anonymous">
 
 
 <div class="wrapper">
@@ -11,11 +11,10 @@
 	</div>
 	<div class="container">
 		<h3>Add New Employee</h3>
-		<form:form class="form-horizontal"
-			action="/Nissan/employee/addEmployee" commandName="employee"
+		<form:form class="form-horizontal" action="${pageContext.request.contextPath}/admin/employee/addEmployee" commandName="employee"
 			method="POST">
 
-			<table class="form-group">
+			<table class="form-group table table-striped">
 				<tbody class="form-group">
 					<tr class="form-group">
 						<td class="col-md-3 control-label"><label>First name:</label></td>
@@ -53,17 +52,17 @@
 					</tr>
 					<tr></tr>
 					<tr class="form-group">
-						<td class="col-md-2 control-label"><label>Department:</label></td>
+						<td class="col-md-3 control-label"><label>Department:</label></td>
 						<td><form:select type="text" path="department.name"
 								id="department" class="form-Control">
 								<form:options items="${employee.departmentOption}" />
 							</form:select></td>
 					</tr>
 					<tr></tr>
-					<tr>
-						<td class="col-md-2 control-label"><label></label></td>
+					<tr class="form-group">
+						<td class="col-md-3 control-label"><label></label></td>
 						<td><input type="submit" value="submit"
-							class="btn btn-primary" /></td>
+							class="btn btn-info" /></td>
 					</tr>
 
 				</tbody>
@@ -71,6 +70,11 @@
 
 		</form:form>
 	</div>
+	<div style="clear; both;"></div>
+		
+		<p>
+			<a href="${pageContext.request.contextPath}/employee">Back to List</a>
+		</p>
 </div>
 
 <%@include file="/WEB-INF/views/template/footer.jsp"%>

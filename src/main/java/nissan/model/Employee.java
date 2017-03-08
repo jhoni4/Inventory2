@@ -92,6 +92,7 @@ public class Employee implements Serializable {
 		departmentOption.put("Exterior", "Exterior");
 		departmentOption.put("Interior", "Interior");
 		departmentOption.put("Trim", "Trim");
+		departmentOption.put("Admin", "Admin");
 	}
 
 	public Department getDepartment() {

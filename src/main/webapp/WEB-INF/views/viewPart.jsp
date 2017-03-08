@@ -12,7 +12,7 @@
 
 				<div class="col-md-5">
 					<p>
-						<strong>Name of part</strong> :${part.name}
+						<strong>Name of part</strong> :${part.partName}
 					</p>
 					<p>
 						<strong>Description of part</strong> :${part.description}
@@ -29,9 +29,7 @@
 			</div>
 		</div>
 		<button type="button" class="btn btn-default btn-lg">
-			<a href="<spring:url value="/part" />"> <span
-				class="glyphicon glyphicon-arrow-left" aria-hidden="true"></span>Back
-			</a>
+			<a href="<spring:url value="/part" />"><h2><span class="glyphicon glyphicon-backward"></span></h2></a>
 		</button>
 	</div>
 </div>

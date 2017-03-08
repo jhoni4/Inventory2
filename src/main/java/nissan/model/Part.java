@@ -1,13 +1,14 @@
 package nissan.model;
 
 import java.io.Serializable;
+import java.util.ArrayList;
 import java.util.LinkedHashMap;
+import java.util.List;
 
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
-import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
 import javax.persistence.Transient;
 
@@ -24,31 +25,40 @@ public class Part implements Serializable {
 	private int partId;
 
 //	@NotEmpty(message = "The part name must not be null.")
-	private String name;
+	private String partName;
 	private String modelNumber;
 	private String description;
 
 //	@Min(value = 0, message = "The part quantity must not be less than zero.")
 	private int quantity;
-	
-	
-	private Department department;
+	private String department;
 	
 	@Transient
-	private LinkedHashMap<String, String> departmentOption;
-
+	private List<String> deptOptions;
+	
 	@Transient
-	public LinkedHashMap<String, String> getDepartmentOption() {
-		return departmentOption;
+	public List<String> getDeptOptions() {
+		return deptOptions;
 	}
 
 	public Part() {
-		departmentOption = new LinkedHashMap<>();
-		departmentOption.put("Bodys", "Bodys");
-		departmentOption.put("Paints", "Paints");
-		departmentOption.put("Exterior", "Exterior");
-		departmentOption.put("Interior", "Interior");
-		departmentOption.put("Trim", "Trim");
+		deptOptions = new ArrayList<String>();
+		deptOptions.add("Bodys");
+		deptOptions.add("Paints");
+		deptOptions.add("Exterior");
+		deptOptions.add("Interior");
+		deptOptions.add("Trim");
+		
+	}
+
+	
+	
+	public String getPartName() {
+		return partName;
+	}
+
+	public void setPartName(String partName) {
+		this.partName = partName;
 	}
 
 	public int getPartId() {
@@ -59,13 +69,6 @@ public class Part implements Serializable {
 		this.partId = partId;
 	}
 
-	public String getName() {
-		return name;
-	}
-
-	public void setName(String name) {
-		this.name = name;
-	}
 
 	public String getModelNumber() {
 		return modelNumber;
@@ -84,11 +87,11 @@ public class Part implements Serializable {
 	}
 
 	@ManyToOne
-	public Department getDepartment() {
+	public String getDepartment() {
 		return department;
 	}
 
-	public void setDepartment(Department department) {
+	public void setDepartment(String department) {
 		this.department = department;
 	}
 

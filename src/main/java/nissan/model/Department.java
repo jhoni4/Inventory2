@@ -1,17 +1,8 @@
 package nissan.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.List;
 
-import javax.persistence.CascadeType;
-import javax.persistence.Entity;
-import javax.persistence.GeneratedValue;
-import javax.persistence.GenerationType;
-import javax.persistence.Id;
-import javax.persistence.JoinColumn;
-import javax.persistence.OneToMany;
-import javax.persistence.OneToOne;
+import javax.persistence.*;
 
 @Entity
 public class Department implements Serializable {
@@ -25,8 +16,6 @@ public class Department implements Serializable {
 	private int departmentId;
 	private String name;
 	
-	@OneToMany(mappedBy = "department", cascade = CascadeType.ALL)
-	private List<Part> parts;
 	
 	@OneToOne
 	@JoinColumn(name = "employeeId")
@@ -39,19 +28,8 @@ public class Department implements Serializable {
 	public void setEmployee(Employee employee) {
 		this.employee = employee;
 	}
-
 	
-
 	public Department() {
-	}
-
-	
-	public List<Part> getParts() {
-		return parts;
-	}
-
-	public void setParts(List<Part> parts) {
-		this.parts = parts;
 	}
 
 	public Department(int departmentId, String name) {

@@ -6,8 +6,6 @@
 
 <div class="container">
 	<section>
-		<a href="<spring:url value="/part/addPart/" />" class="btn btn-info">Add New Part</a>
-		
 		<table class="table table-striped">
 			<thead class="thead-inverse">
 				<tr>
@@ -16,33 +14,25 @@
 					<th>model No</th>
 					<th>Quantity</th>
 					<th>Description</th>
-					<th>Department</th>
-					<th>Actions</th>
+					<th>Category</th>
+					<th>Category</th>
 				</tr>
 			</thead>
 			<tbody>
 				<c:set var="myIndex" value="1" />
-					<%-- <c:url var="deleteLink" value="/part/deletePart">
-						<c:param name="partId" value="${part.partId}"></c:param>
-					</c:url> --%>
 				<c:forEach items="${partsList}" var="part">
 					<tr>
 						<th>${myIndex}</th>
-						<td>${part.name}</td>
+						<td>${part.partName}</td>
 						<td>${part.modelNumber}</td>
 						<td>${part.quantity}</td>
 						<td>${part.description}</td>
-						<td>${part.department.name}</td>
+						<td>${part.department}</td>
 						<td><a
 							href="<spring:url value="/part/viewPart/${part.partId}" />">
-								<span class="glyphicon glyphicon-info-sign"></span>
+								<span class="glyphicon glyphicon-info-sign fa-2x" style="font-size:2em;"></span>
 						</a> 
-						<a href="<spring:url value="/part/deletePart/${part.partId}" />" onclick="if (!(confirm('Are you sure you want to delete this part?'))) return false">
-								<span class="glyphicon glyphicon-trash"></span>
-						</a>
-						<a href="<spring:url value="/part/editPart/${part.partId}" />">
-								<span class="glyphicon glyphicon-edit"></span>
-						</a></td>
+						</td>
 					</tr>
 					<c:set var="myIndex" value="${myIndex + 1}" />
 				</c:forEach>
