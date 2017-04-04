@@ -1,11 +1,11 @@
 <%@include file="/WEB-INF/views/template/header.jsp"%>
 <div class="alert alert-info" role="alert">
-		<h1>Part Detail View</h1>
+		<h1>Employee Detail View</h1>
 </div>
 <div class="container-wrapper">
 	<div class="container">
 		<div class="page-header">
-			<p class="lead">Here is the detail information of the part!</p>
+			<p class="lead">Here is the detail information of the Employee!</p>
 		</div>
 
 		<div class="container">
@@ -14,23 +14,24 @@
 
 				<div class="col-md-5">
 					<p>
-						<strong>Name of part</strong> :${part.partName}
+						<strong>First Name of Employee</strong> :${employee.firstName}
 					</p>
 					<p>
-						<strong>Description of part</strong> :${part.description}
+						<strong>Last Name of Employee</strong> :${employee.lastName}
 					</p>
 					<p>
-						<strong>Model number</strong> : ${part.modelNumber}
+						<strong>Department of Employee</strong> :${employee.department.name}
 					</p>
 					<p>
-						<strong>Quantity</strong> : ${part.quantity}
+						<strong>Employee Number</strong> :${employee.employeeNumber}
 					</p>
+
 					<br>
 
 				</div>
 			</div>
 		</div>
-			<a href="<spring:url value="/part" />"><h2><span class="glyphicon glyphicon-backward"></span></h2></a>
+			<a href="<spring:url value="/employee" />"><h2><span class="glyphicon glyphicon-backward"></span></h2></a>
 	</div>
 </div>
 <%@include file="/WEB-INF/views/template/footer.jsp"%>

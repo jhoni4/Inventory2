@@ -25,4 +25,26 @@ public class EmployeeServiceImpl implements nissan.service.EmployeeService {
 		
 	}
 
+	@Override
+	public Employee getEmployeeById(int employeeId) {
+		return employeeDao.getEmployeeById(employeeId);
+	}
+
+	@Override
+	public void editEmployee(Employee employee) {
+		employeeDao.editEmployee(employee);
+		
+	}
+
+	@Override
+	public void deleteEmployee(Employee employee) {
+		employeeDao.deleteEmployee(employee);
+		
+	}
+
+	public Employee getEmployeeByUsername(String username) {
+		return employeeDao.getEmployeeByUsername(username);
+		 
+	}
+
 }

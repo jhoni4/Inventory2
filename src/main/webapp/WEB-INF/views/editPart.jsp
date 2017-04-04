@@ -3,11 +3,11 @@
 <%-- <!-- Main CSS -->
 <link href="${jstlCss}" rel="stylesheet" /> --%>
 <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/superhero/bootstrap.min.css" rel="stylesheet" integrity="sha384-Xqcy5ttufkC3rBa8EdiAyA1VgOGrmel2Y+wxm4K3kI3fcjTWlDWrlnxyD6hOi3PF" crossorigin="anonymous">
+<div class="alert alert-info" role="alert">
+			<h1>Edit Parts</h1>
+</div>
 <div class="container-wrapper">
 	<div class="container">
-		<div class="page-header">
-			<h1>Edit Parts</h1>
-		</div>
 		<form:form class="form-horizontal" action="${pageContext.request.contextPath}/admin/part/editPart" method="post" commandName="part">
 			<div class="container form-group">
 			<form:hidden path="partId" value="${part.partId}" />
@@ -34,7 +34,7 @@
 				 <div class="form-group">
 					<label class="col-md-2 control-label" for="department">Department:</label>
 					<form:select type="text" path="department" id="department" class="form-Control col-md-3" value="${part.department}" style="color:#092756; font-size:1.2em;" >
-						<form:options items="${part.deptOptions}"/>
+						<form:options items="${dept.deptOptions}"/>
 					</form:select>
 				</div>  
 				<div class="form-group col-md-12">
@@ -46,6 +46,6 @@
 		</form:form>
 		
 	</div>
-	<a href="<spring:url value="/admin/part" />"><h2><span class="glyphicon glyphicon-backward">/span></h2><</a>
+	<a href="<spring:url value="/admin/part" />"><h2><span class="glyphicon glyphicon-backward"></span></h2></a>
 </div>
 <%@include file="/WEB-INF/views/template/footer.jsp"%>

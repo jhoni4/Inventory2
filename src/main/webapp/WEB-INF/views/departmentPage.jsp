@@ -8,8 +8,7 @@
 		<h2>Department Manager</h2>
 	</div>
 	<div class="container">
-		<div class="alert alert-danger" role="alert">
-			<strong>Oh snap!</strong> Department page again.
+		<div class="alert alert-info" role="danger">
 		</div>
 		<%-- <a href="<spring:url value="/employee/addEmployee/" />"
 			class="btn btn-info">Add New Department</a> --%>

@@ -32,7 +32,7 @@
 						<td>${part.modelNumber}</td>
 						<td>${part.quantity}</td>
 						<td>${part.description}</td>
-						<td>${part.department}</td>
+						<td>${part.department.name}</td>
 						<td><a
 							href="<spring:url value="/part/viewPart/${part.partId}" />">
 								<span class="glyphicon glyphicon-info-sign fa-5x" style="font-size:2em;"></span>

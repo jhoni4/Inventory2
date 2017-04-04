@@ -32,8 +32,8 @@
 			
 				 <div class="form-group">
 					<label class="col-md-2 control-label" for="department">Department:</label>
-					<form:select type="text" path="department" id="department" class="form-Control col-md-3">
-						<form:options items="${part.deptOptions}"/>
+					<form:select type="text" path="department.name" id="department" class="form-Control col-md-3" style="color: #000;">
+						<form:options items="${dept.deptOptions}"/>
 					</form:select>
 				</div>  
 				<div class="form-group col-md-12">
@@ -46,7 +46,7 @@
 	</div>
 	
 
-	<a href="/Nissan/part">Back</a>
+	<a href="/Nissan/part"><h2><span class="glyphicon glyphicon-backward"></span></h2></a>
 </div>
 
 

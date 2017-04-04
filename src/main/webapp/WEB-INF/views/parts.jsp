@@ -2,7 +2,9 @@
 
 <%@ page contentType="text/html;charset=UTF-8" language="java"%>
 <%@include file="/WEB-INF/views/template/header.jsp"%>
-
+<div class="alert alert-info" role="primary">
+		<h1>Parts List Page</h1>
+</div>
 
 <div class="container">
 	<section>
@@ -27,7 +29,7 @@
 						<td>${part.modelNumber}</td>
 						<td>${part.quantity}</td>
 						<td>${part.description}</td>
-						<td>${part.department}</td>
+						<td>${part.department.name}</td>
 						<td><a
 							href="<spring:url value="/part/viewPart/${part.partId}" />">
 								<span class="glyphicon glyphicon-info-sign fa-2x" style="font-size:2em;"></span>

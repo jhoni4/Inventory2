@@ -10,7 +10,6 @@
 	</div>
 	<div class="container">
 		<div class="alert alert-danger" role="alert">
-			<strong>Oh snap!</strong> Employee page again.
 		</div>
 		<a href="<spring:url value="/admin/employee/addEmployee/" />"
 			class="btn btn-info">Add New employee</a>
@@ -36,7 +35,16 @@
 						<td>${employee.lastName}</td>
 						<td>${employee.employeeNumber}</td>
 						<td>${employee.department.name}</td>
-						<td></td>
+						<td><a
+							href="<spring:url value="/employee/viewEmployee/${employee.employeeId}" />">
+								<span class="glyphicon glyphicon-info-sign" style="font-size:2em;"></span>
+						</a>  &nbsp;
+						<a href="<spring:url value="/admin/employee/deleteEmployee/${employee.employeeId}" />" onclick="if (!(confirm('Are you sure you want to delete this employee?'))) return false">
+								<span class="glyphicon glyphicon-trash" style="font-size:2em;"></span>
+						</a> &nbsp;
+						<a href="<spring:url value="/admin/employee/editEmployee/${employee.employeeId}" />">
+								<span class="glyphicon glyphicon-edit" style="font-size:2em;"></span>
+						</a></td>
 					</tr>
 					<c:set var="myIndex" value="${myIndex + 1}" />
 				</c:forEach>

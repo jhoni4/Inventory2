@@ -1,0 +1,17 @@
+/*  footer {
+     background: url("../images/Nissan.png") repeat-x scroll left top transparent;
+     height: 100px;
+     margin-top: -50px;
+     position: fixed;
+     bottom:0;
+     width: 100%;
+ } */
+ footer{
+        background-color: gray;
+        bottom: 0;
+        height: 100px;
+        left: 0;
+        position: fixed;
+        right: 0;
+     	z-index: 1;
+    }

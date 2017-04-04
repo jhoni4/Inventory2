@@ -3,12 +3,18 @@
 <%-- <!-- Main CSS -->
 <link href="${jstlCss}" rel="stylesheet" /> --%>
 <link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/slate/bootstrap.min.css" rel="stylesheet" integrity="sha384-RpX8okQqCyUNG7PlOYNybyJXYTtGQH+7rIKiVvg1DLg6jahLEk47VvpUyS+E2/uJ" crossorigin="anonymous">
-
+<div class="pannel">
+            <h1>Register Customer</h1>
+</div>
+<div class="alert alert-danger" role="error">
+	${emailMsg}
+</div>
+<div class="alert alert-danger" role="alert">
+	${usernameMsg}
+</div>
 <div class="container-wrapper">
     <div class="container">
         <div class="page-header">
-            <h1>Register Customer</h1>
-
             <p class="lead">Please fill in your information below:</p>
         </div>
 
@@ -54,8 +60,8 @@
 			
 	        <div class="form-group input-group">
 	            <span class="input-group-addon" id="department">Department</span>
-	            <form:select type="text" path="department.name" id="department" class="form-Control" >
-					<form:options items="${employee.departmentOption}" />
+	            <form:select type="text" path="department.name" id="department" class="form-Control col-md-3" style="font-size:1.2em; color: #000;">
+					<form:options items="${dept.deptOptions}" />
 				</form:select>
 	        </div>
 	
@@ -69,7 +75,7 @@
 	<div style="clear; both;"></div>
 		
 		<p>
-			<a href="${pageContext.request.contextPath}/login">Back to List</a>
+			<a href="${pageContext.request.contextPath}/login"><h2><span class="glyphicon glyphicon-backward"></span></h2></a>
 		</p>
 </div>
 

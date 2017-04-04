@@ -10,6 +10,7 @@ import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Repository;
 
 import nissan.dao.PartDao;
+import nissan.model.Department;
 import nissan.model.Part;
 
 @Repository
@@ -37,7 +38,16 @@ public class PartDaoImpl implements PartDao {
 
 	public void addParts(Part part) {
 		Session session = sessionFactory.getCurrentSession();
+		List<Part> parts = new ArrayList<>();
+		Department department = new Department();
+		parts.add(part);
+		part.getDepartment().setDepartmentId(department.getDepartmentId());
+		part.getDepartment().getEmployee().setEnabled(true);
+		part.getDepartment().setParts(parts);
 		session.saveOrUpdate(part);
+		session.saveOrUpdate(part.getDepartment());
+		session.saveOrUpdate(part.getDepartment().getEmployee());
+		
 		session.flush();
 		
 	}

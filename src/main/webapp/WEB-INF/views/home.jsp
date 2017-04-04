@@ -4,6 +4,7 @@
 	 <div class="container">
 		<section>
 			<div class="jumbotron">
+				<img src="<c:url value="/resources/images/Nissan.png" />" alt="First slide" height="300">
 				<div class="container">
 					<h1>NISSAN HOME PAGE</h1>
 					<p>All the parts</p>

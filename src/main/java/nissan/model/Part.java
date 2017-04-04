@@ -1,16 +1,14 @@
 package nissan.model;
 
 import java.io.Serializable;
-import java.util.ArrayList;
-import java.util.LinkedHashMap;
-import java.util.List;
 
+import javax.persistence.CascadeType;
 import javax.persistence.Entity;
 import javax.persistence.GeneratedValue;
 import javax.persistence.GenerationType;
 import javax.persistence.Id;
+import javax.persistence.JoinColumn;
 import javax.persistence.ManyToOne;
-import javax.persistence.Transient;
 
 @Entity
 public class Part implements Serializable {
@@ -24,35 +22,22 @@ public class Part implements Serializable {
 	@GeneratedValue(strategy = GenerationType.AUTO)
 	private int partId;
 
-//	@NotEmpty(message = "The part name must not be null.")
+	// @NotEmpty(message = "The part name must not be null.")
 	private String partName;
 	private String modelNumber;
 	private String description;
 
-//	@Min(value = 0, message = "The part quantity must not be less than zero.")
+	// @Min(value = 0, message = "The part quantity must not be less than
+	// zero.")
 	private int quantity;
-	private String department;
 	
-	@Transient
-	private List<String> deptOptions;
-	
-	@Transient
-	public List<String> getDeptOptions() {
-		return deptOptions;
+	@ManyToOne(cascade = CascadeType.ALL)
+	@JoinColumn(name="departmentId")
+	private Department department;
+
+	public Part() {// empty constructor to instantiation
 	}
 
-	public Part() {
-		deptOptions = new ArrayList<String>();
-		deptOptions.add("Bodys");
-		deptOptions.add("Paints");
-		deptOptions.add("Exterior");
-		deptOptions.add("Interior");
-		deptOptions.add("Trim");
-		
-	}
-
-	
-	
 	public String getPartName() {
 		return partName;
 	}
@@ -68,7 +53,6 @@ public class Part implements Serializable {
 	public void setPartId(int partId) {
 		this.partId = partId;
 	}
-
 
 	public String getModelNumber() {
 		return modelNumber;
@@ -86,12 +70,11 @@ public class Part implements Serializable {
 		this.description = description;
 	}
 
-	@ManyToOne
-	public String getDepartment() {
+	public Department getDepartment() {
 		return department;
 	}
 
-	public void setDepartment(String department) {
+	public void setDepartment(Department department) {
 		this.department = department;
 	}
 

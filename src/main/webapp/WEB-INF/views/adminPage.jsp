@@ -7,7 +7,7 @@
 			<h1>Welcome to Admin page</h1>
 		</div>
 
-		 <h2><a href="/Nissan/admin/employee">Employee Page</a></h2>| 
+		 <h2><a href="/Nissan/admin/employee">Employee Page</a></h2>
 		 <h2><a href="/Nissan/admin/part">AdminPart Page</a></h2> 
 	</div>
 </div>

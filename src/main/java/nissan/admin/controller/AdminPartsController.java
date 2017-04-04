@@ -2,7 +2,11 @@ package nissan.admin.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.security.core.userdetails.User;
+import org.springframework.security.web.bind.annotation.AuthenticationPrincipal;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
 import org.springframework.validation.BindingResult;
@@ -12,7 +16,11 @@ import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import nissan.model.Department;
+import nissan.model.Dept;
+import nissan.model.Employee;
 import nissan.model.Part;
+import nissan.service.EmployeeService;
 import nissan.service.PartService;
 
 @Controller
@@ -21,53 +29,63 @@ public class AdminPartsController {
 	
 	@Autowired
 	private PartService partService;
+	
+	@Autowired
+	private EmployeeService employeeService;
 
 	@RequestMapping("/part")
 	public String showParts(Model model) {
 		List<Part> partsList = partService.getPartsList();
 		model.addAttribute("partsList", partsList);
-		System.out.println("PART LISTS: " +  partsList);
 		return "adminPartsPage";
 	}
 
 	@RequestMapping(value = "/part/addPart", method = RequestMethod.GET)
 	public String addPart(Model model) {
 		Part part = new Part();
+		Dept dept = new Dept();
+		Department department = new Department();
+		model.addAttribute("department", department);
+		model.addAttribute("dept", dept);
 		model.addAttribute("part", part);
 		return "addPart"; 
 	}
 
 	@RequestMapping(value = "/part/addPart", method = RequestMethod.POST)
-	public String addPart(@ModelAttribute("part") Part part, BindingResult result, Model model) {
+	public String addPart(@Valid @ModelAttribute("part") Part part, BindingResult result, Model model, @AuthenticationPrincipal Employee activeUser) {
 		if (result.hasErrors()) {
 			return "addPart";
 		}
-		
 
-//        List<Part> partsList = partService.getPartsList();
-//
-//        for (int i=0; i< partsList.size(); i++) {
-//            if(part.getModelNumber().equals(partsList.get(i).getModelNumber())) {
-//                model.addAttribute("ModelMsg", "Model No already exists");
-//
-//                return "addEmployee";
-//            }
-//            
-//            if(part.getPartName().equals(partsList.get(i).getPartName())) {
-//            	model.addAttribute("NameMsg", "Name already exists");
-//            	
-//            	return "addEmployee";
-//            }
+        List<Part> partsList = partService.getPartsList();
 
+        for (int i=0; i< partsList.size(); i++) {
+            if(part.getModelNumber().equals(partsList.get(i).getModelNumber())) {
+                model.addAttribute("ModelMsg", "Model No already exists");
+
+                return "addEmployee";
+            }
             
-//        }
-		partService.addParts(part);
+            if(part.getPartName().equals(partsList.get(i).getPartName())) {
+            	model.addAttribute("NameMsg", "Name already exists");
+            	
+            	return "addEmployee";
+            }
+        }
+        
+        Employee employee = employeeService.getEmployeeByUsername(activeUser.getUsername());
+        partService.addParts(part);
+        part.getDepartment().setEmployee(employee);
 		return "redirect:/admin/part";
 	}
 
 	@RequestMapping(value = "/part/editPart/{partId}", method = RequestMethod.GET)
 	public String editPart(@PathVariable("partId") int partId, Model model) {
 		Part part = partService.getPartsById(partId);
+		Dept dept = new Dept();
+		Department department = new Department();
+		model.addAttribute("department", department);
+		model.addAttribute("dept", dept);
 		model.addAttribute("part", part);
 		return "editPart";
 	}

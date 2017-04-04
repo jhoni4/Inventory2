@@ -16,11 +16,13 @@
  <!-- Bootstrap core CSS -->
 <c:url value="/resources/css/main.css" var="jstlCss" />
 <c:url value="/resources/css/bootstrap.min.css" var="bootCss" />
+<c:url value="/resources/css/footerStyle.css" var="footerCss" />
 <link href="${jstlCss}" rel="stylesheet" /> 
 <link href="${bootCss}" rel="stylesheet" /> 
+<link href="${footerCss}" rel="stylesheet" /> 
     
 
-  
+<link href="https://maxcdn.bootstrapcdn.com/bootswatch/3.3.7/slate/bootstrap.min.css" rel="stylesheet" integrity="sha384-RpX8okQqCyUNG7PlOYNybyJXYTtGQH+7rIKiVvg1DLg6jahLEk47VvpUyS+E2/uJ" crossorigin="anonymous">
 
   
 </head>
@@ -35,7 +37,7 @@
             <span class="icon-bar"></span>
             <span class="icon-bar"></span>
           </button>
-          <a class="navbar-brand" href="/Nissan">NISSAN</a>
+          <a class="navbar-brand" href="/Nissan"><img src="<c:url value="/resources/images/Nissan-logo.jpg" />" alt="Nissan" width="80"></a>
         </div>
         <div id="navbar" class="navbar-collapse collapse">
           <ul class="nav navbar-nav">
@@ -47,6 +49,7 @@
             <li class="dropdown">
               <a href="/Nissan/department/" class="dropdown-toggle" data-toggle="dropdown" role="button" aria-haspopup="true" aria-expanded="false">Departments <span class="caret"></span></a>
               <ul class="dropdown-menu" aria-labelledby="Departments">
+						<li><a href="/Nissan/department">Department</a></li>
 						<li><a href="/Nissan/department/1">Exterior</a></li>
 						<li><a href="/Nissan/department/2">Interior</a></li>
 						<li><a href="/Nissan/department/3">Body</a></li>
@@ -77,9 +80,8 @@
       </div>
     </nav>
     
-	<div class="alert alert-info" role="alert">
-		<strong>Well done!</strong> You successfully read this important alert
-		message.
-	</div>
+	<br>
+	<br>
+	<br>
 
 

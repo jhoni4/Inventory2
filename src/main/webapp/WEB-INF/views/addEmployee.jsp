@@ -9,6 +9,7 @@
 	<div id="header">
 		<h2>Employee Relationship Manager</h2>
 	</div>
+	
 	<div class="container">
 		<h3>Add New Employee</h3>
 		<form:form class="form-horizontal" action="${pageContext.request.contextPath}/admin/employee/addEmployee" commandName="employee"
@@ -53,9 +54,8 @@
 					<tr></tr>
 					<tr class="form-group">
 						<td class="col-md-3 control-label"><label>Department:</label></td>
-						<td><form:select type="text" path="department.name"
-								id="department" class="form-Control">
-								<form:options items="${employee.departmentOption}" />
+						<td><form:select type="text" path="department.name" id="department" class="form-Control col-md-3" style="color: #000;">
+								<form:options items="${dept.deptOptions}" />
 							</form:select></td>
 					</tr>
 					<tr></tr>
@@ -73,7 +73,7 @@
 	<div style="clear; both;"></div>
 		
 		<p>
-			<a href="${pageContext.request.contextPath}/employee">Back to List</a>
+			<a href="${pageContext.request.contextPath}/employee"><h2><span class="glyphicon glyphicon-backward"></span></h2></a>
 		</p>
 </div>
 

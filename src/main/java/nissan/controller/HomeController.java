@@ -2,6 +2,8 @@ package nissan.controller;
 
 import java.util.List;
 
+import javax.validation.Valid;
+
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.stereotype.Controller;
 import org.springframework.ui.Model;
@@ -10,6 +12,7 @@ import org.springframework.web.bind.annotation.ModelAttribute;
 import org.springframework.web.bind.annotation.RequestMapping;
 import org.springframework.web.bind.annotation.RequestMethod;
 
+import nissan.model.Dept;
 import nissan.model.Employee;
 import nissan.service.EmployeeService;
 
@@ -33,16 +36,18 @@ public class HomeController {
 	@RequestMapping("/register")
 	public String register(Model model){
 		Employee employee = new Employee();
+		Dept dept = new Dept();
+		model.addAttribute("dept", dept);
 		model.addAttribute("employee", employee);
 		return "register";
 	}
 	
 	@RequestMapping(path = "/register", method = RequestMethod.POST)
-	public String addEmployee(@ModelAttribute("employee") Employee employee, BindingResult result,
+	public String addEmployee(@Valid @ModelAttribute("employee") Employee employee, BindingResult result,
             Model model) {
 		
 		if (result.hasErrors()) {
-            return "addEmployee";
+            return "register";
         }
 
         List<Employee> employeeList=employeeService.getEmployeeList();
@@ -51,19 +56,19 @@ public class HomeController {
             if(employee.getEmployeeEmail().equals(employeeList.get(i).getEmployeeEmail())) {
                 model.addAttribute("emailMsg", "Email already exists");
 
-                return "addEmployee";
+                return "register";
             }
 
             if(employee.getUsername().equals(employeeList.get(i).getUsername())) {
                 model.addAttribute("usernameMsg", "Username already exists");
 
-                return "addEmployee";
+                return "register";
             }
         }
 
         employee.setEnabled(true);
 		employeeService.addEmployee(employee);
-		return "redirect:/";
+		return "registerEmployeeSuccess";
 	}
 
 }

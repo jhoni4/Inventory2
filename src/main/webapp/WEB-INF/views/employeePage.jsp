@@ -2,15 +2,13 @@
 <%@taglib prefix="form" uri="http://www.springframework.org/tags/form"%>
 <!-- Main CSS -->
 <link href="${jstlCss}" rel="stylesheet" />
-
+<div class="alert alert-info" role="success">
+		<h2>Employee List page</h2>
+</div>
 <div id="wrapper">
 	<div id="header">
-		<h2>Employee List page</h2>
 	</div>
 	<div class="container">
-		<div class="alert alert-danger" role="alert">
-			<strong>Oh snap!</strong> Employee page again.
-		</div>
 		<table class="table table-striped">
 			<thead class="thead-inverse">
 				<tr>
@@ -31,7 +29,11 @@
 						<td>${employee.lastName}</td>
 						<td>${employee.employeeNumber}</td>
 						<td>${employee.department.name}</td>
-						<td></td>
+						<td><a
+							href="<spring:url value="/employee/viewEmployee/${employee.employeeId}" />">
+								<span class="glyphicon glyphicon-info-sign fa-2x" style="font-size:2em;"></span>
+						</a>
+						</td> 
 					</tr>
 					<c:set var="myIndex" value="${myIndex + 1}" />
 				</c:forEach>

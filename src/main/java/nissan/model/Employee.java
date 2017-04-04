@@ -1,11 +1,13 @@
 package nissan.model;
 
 import java.io.Serializable;
-import java.util.LinkedHashMap;
 
-import javax.persistence.*;
-
-import org.hibernate.validator.constraints.NotEmpty;
+import javax.persistence.Entity;
+import javax.persistence.GeneratedValue;
+import javax.persistence.GenerationType;
+import javax.persistence.Id;
+import javax.persistence.JoinColumn;
+import javax.persistence.OneToOne;
 
 @Entity
 public class Employee implements Serializable {
@@ -21,18 +23,25 @@ public class Employee implements Serializable {
 	private String lastName;
 	private int employeeNumber;
 
-//	@NotEmpty(message = "The employee email must not be null.")
+	// @NotEmpty(message = "The employee email must not be null.")
 	private String employeeEmail;
 	private String employeePhone;
 
-//	@NotEmpty(message = "The customer username must not be null.")
+	// @NotEmpty(message = "The customer username must not be null.")
 	private String username;
 
-//	@NotEmpty(message = "The customer password must not be null.")
+	// @NotEmpty(message = "The customer password must not be null.")
 	private String password;
 
 	private boolean enabled;
 	
+	@OneToOne
+	@JoinColumn(name = "departmentId")
+	private Department department;
+
+	public Employee() {// commenting later
+	}
+
 	public String getEmployeeEmail() {
 		return employeeEmail;
 	}
@@ -73,27 +82,7 @@ public class Employee implements Serializable {
 		this.enabled = enabled;
 	}
 
-	@OneToOne
-	@JoinColumn(name = "departmentId")
-	private Department department;
-
-	@Transient
-	private LinkedHashMap<String, String> departmentOption;
-
-	@Transient
-	public LinkedHashMap<String, String> getDepartmentOption() {
-		return departmentOption;
-	}
-
-	public Employee() {
-		departmentOption = new LinkedHashMap<>();
-		departmentOption.put("Bodys", "Bodys");
-		departmentOption.put("Paints", "Paints");
-		departmentOption.put("Exterior", "Exterior");
-		departmentOption.put("Interior", "Interior");
-		departmentOption.put("Trim", "Trim");
-		departmentOption.put("Admin", "Admin");
-	}
+	
 
 	public Department getDepartment() {
 		return department;
