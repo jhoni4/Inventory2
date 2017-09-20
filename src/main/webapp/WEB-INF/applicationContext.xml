@@ -44,6 +44,8 @@
         <property name="sessionFactory" ref="sessionFactory" />
     </bean>
     
+    <!-- spring security configuration -->
+    
     <security:http auto-config="true">
         <security:intercept-url pattern="/Nissan/admin/**" access="ROLE_ADMIN" />
         <security:intercept-url pattern="/Nissan/employee/**" access="ROLE_USER" />

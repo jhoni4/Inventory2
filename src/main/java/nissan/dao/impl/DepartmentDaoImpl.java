@@ -11,6 +11,7 @@ import org.springframework.stereotype.Repository;
 import nissan.dao.DepartmentDao;
 import nissan.model.Department;
 
+
 @Repository
 public class DepartmentDaoImpl implements DepartmentDao {
 	

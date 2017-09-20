@@ -45,7 +45,7 @@ public class HomeController {
 	@RequestMapping(path = "/register", method = RequestMethod.POST)
 	public String addEmployee(@Valid @ModelAttribute("employee") Employee employee, BindingResult result,
             Model model) {
-		
+		System.out.println("result::" +result.hasErrors());
 		if (result.hasErrors()) {
             return "register";
         }
