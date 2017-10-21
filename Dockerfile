@@ -1,8 +1,8 @@
 FROM java:8-jre
 MAINTAINER yonatan <jhoni42002@gmail.com>
 
-ADD . /target/Parts.jar /app/
+ADD . /target/Nissan.jar /app/
 
-CMD ["java", "-jar", "/app/Parts.jar"]
+CMD ["java", "-jar", "/app/Nissan.jar"]
 
 EXPOSE 8070
